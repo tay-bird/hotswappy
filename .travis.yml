@@ -13,6 +13,7 @@ before_install:
   - echo -e "machine github.com\n  login $CI_USER_TOKEN" >> ~/.netrc
 install:
   - "pip install -r requirements.txt"
+  - "python setup.py develop"
 script:
   - "cd tests"
   - "nosetests"
