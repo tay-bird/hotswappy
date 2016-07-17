@@ -18,8 +18,10 @@ before_install:
 install:
   - "pip install -r requirements.txt"
 script:
-  - "cd tests; nosetests; cd ../"
-  - "cd docs; make html; cd ../"
+  - "cd tests"
+  - "nosetests"
+  - "cd ../docs"
+  - "make html"
 after_success:
   - python travis_after_all.py https://api.travis-ci.org
   - export $(cat .to_export_back)
