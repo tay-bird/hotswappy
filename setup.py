@@ -7,10 +7,10 @@ setup(
     packages = ["hotswappy"],
     version = "0.0.2",
     author = "Tay Frost",
-    author_email = "taylor@taybird.com",
+    author_email = "tay@taybird.com",
     description = ("A plugin hot-loader."),
     license = "BSD",
-    url = "https://bitbucket.org/taybird/hotswappy",
+    url = "https://github.com/tay-bird/hotswappy",
     classifiers=[
         "Development Status :: 3 - Alpha",
         "License :: OSI Approved :: BSD License",
