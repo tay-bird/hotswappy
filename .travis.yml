@@ -7,6 +7,10 @@ python:
   - "2.7"
   - "3.5"
 
+env:
+global:
+  - GITHUB_TOKEN=$CI_USER_TOKEN
+
 before_install:
   - git config --global user.name "Travis CI"
   - git config --global user.email "tay@taybird.com"
@@ -15,4 +19,18 @@ install:
   - "pip install -r requirements.txt"
 script:
   - "cd tests; nosetests; cd ../"
-  - "make html"
+  - "cd docs; make html; cd ../"
+after_success:
+  - python travis_after_all.py https://api.travis-ci.org
+  - export $(cat .to_export_back)
+  - |
+      if [ "$BUILD_LEADER" = "YES" ]; then
+        if [ "$BUILD_AGGREGATE_STATUS" = "others_succeeded" ]; then
+          echo "All jobs succeeded! PUBLISHING..."
+        else
+          echo "Some jobs failed"
+        fi
+      fi
+  - "git subtree push --prefix docs/_build/html origin gh-pages"
+after_script:
+  - echo leader=$BUILD_LEADER status=$BUILD_AGGREGATE_STATUS
