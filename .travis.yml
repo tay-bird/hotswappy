@@ -13,7 +13,5 @@ before_install:
 install:
   - "pip install -r requirements.txt"
 script:
-  - "python tests/tests.py"
+  - "cd tests; nosetests; cd ../"
   - "make html"
-after_success:
-  - "./push_to_prod"
