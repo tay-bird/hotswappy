@@ -20,8 +20,7 @@ script:
   - "cd ../"
   - "make -C docs html"
 after_success:
-  - export GITHUB_TOKEN="${CI_USER_TOKEN}"
-  - python travis_after_all.py https://api.travis-ci.org
+  - env GITHUB_TOKEN="${CI_USER_TOKEN}" python travis_after_all.py https://api.travis-ci.org
   - export $(cat .to_export_back)
   - |
       if [ "$BUILD_LEADER" = "YES" ]; then
