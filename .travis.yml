@@ -7,6 +7,9 @@ python:
   - "2.7"
   - "3.5"
 
+cache:
+  - pip
+
 before_install:
   - git config --global user.name "Travis CI"
   - git config --global user.email "tay@taybird.com"
