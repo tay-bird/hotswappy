@@ -1,2 +1,2 @@
-from hotswappy import Controller
-from hotswappy import Plugin
+from .hotswappy import Controller
+from .hotswappy import Plugin
