@@ -7,10 +7,6 @@ python:
   - "2.7"
   - "3.5"
 
-env:
-global:
-  - GITHUB_TOKEN=$CI_USER_TOKEN
-
 before_install:
   - git config --global user.name "Travis CI"
   - git config --global user.email "tay@taybird.com"
@@ -23,6 +19,7 @@ script:
   - "cd ../docs"
   - "make html"
 after_success:
+  - export GITHUB_TOKEN="${CI_USER_TOKEN}"
   - python travis_after_all.py https://api.travis-ci.org
   - export $(cat .to_export_back)
   - |
