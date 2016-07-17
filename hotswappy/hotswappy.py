@@ -1,3 +1,4 @@
+import imp
 import inspect
 import logging
 
@@ -41,6 +42,6 @@ class Controller(object):
         plugins = inspect.getmembers(self.module, inspect.ismodule)
         
         for plugin in plugins:
-            reload(plugin[1])
+            imp.reload(plugin[1])
         
         self.load(name)
