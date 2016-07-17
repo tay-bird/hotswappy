@@ -29,10 +29,10 @@ after_success:
       if [ "$BUILD_LEADER" = "YES" ]; then
         if [ "$BUILD_AGGREGATE_STATUS" = "others_succeeded" ]; then
           echo "All jobs succeeded! PUBLISHING..."
+          git subtree push --prefix docs/_build/html origin gh-pages
         else
           echo "Some jobs failed"
         fi
       fi
-  - "git subtree push --prefix docs/_build/html origin gh-pages"
 after_script:
   - echo leader=$BUILD_LEADER status=$BUILD_AGGREGATE_STATUS
